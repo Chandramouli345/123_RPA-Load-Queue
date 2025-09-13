@@ -30,20 +30,20 @@ stages:
 - stage: Build
   jobs:
   - job: BuildJob
-    pool: Self
+    pool: Default
 
     workspace:
       clean: all
     steps:
     - script: 'echo project path: ${{ parameters.projectPath }}, folder name: ${{ parameters.folderName }}, versioning strategy: ${{ parameters.versioningStrategy }}, environments: ${{ parameters.environments }}'
       displayName: Log parameters
-    - task: UiPathInstallPlatform-preview@4  # This installs required exes. Not necessary if using a dedicated build machine.
+    - task: UiPathInstallPlatform-preview@5  # This installs required exes. Not necessary if using a dedicated build machine.
 
-    - task: UiPathPack@4
+    - task: UiPathPack@5
       inputs:
        versionType: 'CurrentVersion'
        projectJsonPath: '$(Build.SourcesDirectory)\${{ parameters.projectPath }}'
-       orchestratorConnection: 'UipathToken'
+       orchestratorConnection: 'Uipath'
        outputPath: '$(Build.ArtifactStagingDirectory)\Output'
     # Publish the nuget package for later stages.
     - publish: $(Build.ArtifactStagingDirectory)\Output
@@ -56,17 +56,17 @@ stages:
   condition: and(succeeded('Build'), startsWith(variables['Build.SourceBranchName'], 'main'))  # Only run if the packaging succeeded and we are on a release* branch.
   jobs:
   - job: DeployToTestJob
-    pool: Self
+    pool: Default
 
     workspace:
       clean: all
     steps:
     - download: current
       artifact: drop
-    - task: UiPathInstallPlatform-preview@4  # This installs required exes. Not necessary if using a dedicated build machine.
-    - task: UiPathDeploy@4
+    - task: UiPathInstallPlatform-preview@5  # This installs required exes. Not necessary if using a dedicated build machine.
+    - task: UiPathDeploy@5
       inputs:
-        orchestratorConnection: 'UipathToken'
+        orchestratorConnection: 'Uipath'
         packagesPath: '$(Pipeline.Workspace)\drop'
         folderName: '${{ parameters.folderName }}'
         environments: '${{ parameters.environments }}'
@@ -77,7 +77,7 @@ stages:
   condition: and(succeeded('Build'), eq(variables['Build.SourceBranchName'], 'Develop'))
   jobs:
   - deployment: DeployToProdJob
-    pool: self
+    pool: Default
 
     workspace:
       clean: all
@@ -88,10 +88,10 @@ stages:
           steps:
           - download: current
             artifact: drop
-          - task: UiPathInstallPlatform-preview@4  # This installs required exes. Not necessary if using a dedicated build machine.
-          - task: UiPathDeploy@4
+          - task: UiPathInstallPlatform-preview@5  # This installs required exes. Not necessary if using a dedicated build machine.
+          - task: UiPathDeploy@5
             inputs:
-              orchestratorConnection: 'UipathToken'  # Update this to a service connection for your Prod Orchestrator.
+              orchestratorConnection: 'Uipath'  # Update this to a service connection for your Prod Orchestrator.
               packagesPath: '$(Pipeline.Workspace)\drop'
               folderName: ${{ parameters.folderName }}
               environments: ${{ parameters.environments }}
