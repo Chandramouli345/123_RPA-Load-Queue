@@ -1,20 +1,21 @@
 {
-  "name": "RPA Challenge",
-  "projectId": "2ad6b1db-6e20-48f2-816c-73ae02fe500b",
-  "description": "Pipeline testing for RPA Challenge Project",
+  "name": "123_RPA Challenge Load Queue",
+  "projectId": "c101862c-7ea0-4165-bca3-e57c9a5bdfbb",
+  "description": "Robotic Enterprise Framework",
   "main": "Main.xaml",
   "dependencies": {
-    "UiPath.Excel.Activities": "[2.24.3]",
-    "UiPath.Mail.Activities": "[1.23.11]",
-    "UiPath.System.Activities": "[24.11.0-preview]",
-    "UiPath.Testing.Activities": "[24.10.3]",
-    "UiPath.UIAutomation.Activities": "[24.11.1-preview]"
+    "UiPath.Excel.Activities": "[2.22.3]",
+    "UiPath.GSuite.Activities": "2.5.2-preview",
+    "UiPath.Mail.Activities": "[1.22.0-preview]",
+    "UiPath.System.Activities": "[23.10.3]",
+    "UiPath.Testing.Activities": "[23.10.0]",
+    "UiPath.UIAutomation.Activities": "[23.10.7]"
   },
   "webServices": [],
   "entitiesStores": [],
   "schemaVersion": "4.0",
-  "studioVersion": "24.10.6.0",
-  "projectVersion": "1.0.0",
+  "studioVersion": "23.10.2.0",
+  "projectVersion": "1.0.4",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -43,14 +44,57 @@
     "processOptions": {
       "ignoredFiles": []
     },
-    "fileInfoCollection": [],
+    "fileInfoCollection": [
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "495c8b40-fed0-454a-b1fa-4e6e258414cc",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\GetTransactionDataTestCase.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "037d4725-6a06-44c9-8aca-60bfdfbeb7b8",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\InitAllApplicationsTestCase.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "7874d780-d8cf-4089-8671-c6fe627f9d88",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\InitAllSettingsTestCase.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "baf01aed-0392-49bd-b5a0-69fb51f86b10",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\MainTestCase.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "2328e8b0-f5ab-4ef6-9188-de79c6d1ccb4",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\ProcessTestCase.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "5024f405-c36a-4ba6-bb08-e1f2e2bece1a",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\WorkflowTestCaseTemplate.xaml"
+      }
+    ],
     "saveToCloud": false
   },
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
     {
       "filePath": "Main.xaml",
-      "uniqueId": "cfc43f74-7da5-4fb3-9848-dc7100be6665",
+      "uniqueId": "a46b8a70-b41f-4adf-a160-2edfcf576ea1",
       "input": [],
       "output": []
     }
