@@ -43,7 +43,7 @@ resources:
 
 # Use the specified template. 
 extends:
-  template: project-pipeline-template.yaml@templates  # Template reference
+  template: project-pipeline-template.yaml@123_RPAProcessCase  # Template reference
   parameters:
     projectPath: $(projectPath)
     folderName: $(folderName)
